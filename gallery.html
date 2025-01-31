@@ -33,7 +33,12 @@
                 <img src="images/picture10.jpeg" alt = "Picture 10" class="photo">-->
             </ul>
         </main>
-    </div>
+        <!-- Info Box -->
+        <div id="info-box">
+            <h2 id="info-heading"></h2>
+            <p id="info-text"></p>
+            <a href="#" id="close-info">Close</a>
+        </div>
     <footer>&copy; Copyright 2025</footer>
 
     <script>
@@ -64,6 +69,18 @@
             "Coco can mimic anything you say!",
             "Max is a majestic horse!"
         ];
+        var infoTexts = [
+            "Fluffy is a 3-year-old Persian cat who enjoys lounging in the sun.",
+            "Buddy is a golden retriever that loves playing fetch and running in the park.",
+            "Goldie is a beautiful goldfish who enjoys swimming in a peaceful aquarium.",
+            "Chirpy is a bright yellow canary with a sweet, melodic song.",
+            "Speedy is a small but wise turtle, living up to his name with a slow but steady nature.",
+            "Bella is a cute bunny who loves nibbling on carrots and hopping around happily.",
+            "Milo, the tiny hamster, enjoys running in his wheel all night long.",
+            "Daisy is a friendly cow that loves grazing in open fields.",
+            "Coco is a clever parrot who can mimic words and loves interacting with people.",
+            "Max is a strong and beautiful horse that enjoys galloping freely."
+        ];
 
         var imageList = [];
         var image = [];
@@ -81,6 +98,20 @@
         }
 
         document.getElementById("photo").innerHTML = imageList.join("");
+
+        document.querySelectorAll(".description").forEach((desc, index) => {
+            desc.addEventListener("click", function() {
+                document.getElementById("info-heading").innerText = captionTexts[index];
+                document.getElementById("info-text").innerText = infoTexts[index];
+                document.getElementById("info-box").style.visibility = "visible";
+            });
+        });
+
+        // Close the Info Box
+        document.getElementById("close-info").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("info-box").style.visibility = "hidden";
+        });
     </script>
 </body>
 </html>
